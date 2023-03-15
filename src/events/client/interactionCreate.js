@@ -37,6 +37,18 @@ module.exports = {
                 console.log(err);
                 await interaction.reply({ content: `Something went wrong`, ephemeral: true });
             }
+        } else if (interaction.isContextMenuCommand()) {
+            const { commands } = client;
+            const { commandName } = interaction;
+            const contextCommand = commands.get(commandName);
+            if (!contextCommand) return;
+
+            try {
+                await contextCommand.execute(interaction, client);
+            } catch (err) {
+                console.log(err);
+                await interaction.reply({ content: `Something went wrong`, ephemeral: true });
+            }
         }
     }
 }
