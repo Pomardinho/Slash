@@ -25,6 +25,18 @@ module.exports = {
                 console.log(error);
                 await interaction.reply({ content: `Something went wrong`, ephemeral: true });
             }
+        } else if (interaction.isSelectMenu()) {
+            const { selectMenus } = client;
+            const { customId } = interaction;
+            const menu = selectMenus.get(customId);
+            if (!menu) return;
+
+            try {
+                await menu.execute(interaction, client);
+            } catch (err) {
+                console.log(err);
+                await interaction.reply({ content: `Something went wrong`, ephemeral: true });
+            }
         }
     }
 }
