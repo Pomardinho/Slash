@@ -1,8 +1,8 @@
 module.exports = {
     data: {
-        name: 'example-menu'
+        name: 'example'
     },
     async execute(interaction, client) {
-        await interaction.reply({ content: `Example select menu, selected: ${interaction.values[0]}` })
+        await interaction.reply({ content: `You selected: ${interaction.values[0]}` })
     }
 }
