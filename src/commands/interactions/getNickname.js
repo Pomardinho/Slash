@@ -5,6 +5,6 @@ module.exports = {
     .setName('getNickname')
     .setType(ApplicationCommandType.User),
     async execute(interaction, client) {
-        await interaction.reply({ content: interaction.member.nickname == null ? `${interaction.targetUser.username}` : `${interaction.member.nickname}`});
+        await interaction.reply({ content: interaction.member.nickname == null ? `${interaction.member.user.username}` : `${interaction.member.nickname}`});
     }
 }
